@@ -46,6 +46,20 @@ export default function PrivacyPolicy() {
               <p className="text-[var(--text-muted)]">Last updated: December 24, 2025</p>
             </div>
 
+            {/* Medical Disclaimer */}
+            <div className="mb-8 rounded-xl border-2 border-amber-500/30 bg-amber-500/10 p-6">
+              <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold text-amber-400">
+                <span>⚠️</span> DISCLAIMER: NOT FOR MEDICAL USE
+              </h2>
+              <p className="leading-relaxed text-[var(--text-secondary)]">
+                ContextWell is designed for general health and wellness purposes only. It is not a medical
+                device and is not intended to diagnose, treat, cure, or prevent any disease or health condition.
+                The information provided by this app (including AI insights and cycle tracking) should not be
+                treated as professional medical advice. Always consult with a healthcare professional for any
+                medical concerns.
+              </p>
+            </div>
+
             <div className="glass-card space-y-8 p-8 md:p-12">
               <section>
                 <h2
