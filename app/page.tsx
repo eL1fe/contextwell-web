@@ -361,7 +361,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 pt-6">
               {/* Free Tier */}
               <div className="pricing-card glass-card p-8">
                 <div className="text-4xl mb-4">🌱</div>

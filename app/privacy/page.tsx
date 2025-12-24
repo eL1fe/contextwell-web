@@ -43,7 +43,7 @@ export default function PrivacyPolicy() {
               >
                 Privacy Policy
               </h1>
-              <p className="text-[var(--text-muted)]">Last updated: December 24, 2024</p>
+              <p className="text-[var(--text-muted)]">Last updated: December 24, 2025</p>
             </div>
 
             <div className="glass-card space-y-8 p-8 md:p-12">
