@@ -3,6 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { WaitlistButton } from '@/components/WaitlistModal'
+
+// TODO: Set to true when app is published on Google Play
+const IS_PUBLISHED = false
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.contextwell.app'
 
 const features = [
   { icon: '🌙', title: 'Sleep Tracking', description: 'Sync with Health Connect for detailed sleep analysis and personalized recommendations.', color: '#8b5cf6' },
@@ -78,14 +83,20 @@ export default function Home() {
               <a href="#pricing" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Pricing</a>
               <Link href="/about" className="footer-link hover:text-[var(--glow-primary)] transition-colors">About</Link>
               <Link href="/contact" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Contact</Link>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.contextwell.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glow-button !py-2 !px-5 !text-sm"
-              >
-                Download
-              </a>
+              {IS_PUBLISHED ? (
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glow-button !py-2 !px-5 !text-sm"
+                >
+                  Download
+                </a>
+              ) : (
+                <WaitlistButton className="glow-button !py-2 !px-5 !text-sm">
+                  Join Waitlist
+                </WaitlistButton>
+              )}
             </div>
           </div>
         </nav>
@@ -127,17 +138,26 @@ export default function Home() {
               </p>
 
               <div className="hero-buttons flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.contextwell.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glow-button group"
-                >
-                  <svg className="h-5 w-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm3.35-4.31c.34.27.64.71.64 1.19s-.3.92-.64 1.19l-2.35 1.27-2.46-2.46 2.46-2.46 2.35 1.27zM6.05 2.66l10.76 6.22-2.27 2.27L6.05 2.66z" />
-                  </svg>
-                  Google Play
-                </a>
+                {IS_PUBLISHED ? (
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glow-button group"
+                  >
+                    <svg className="h-5 w-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm3.35-4.31c.34.27.64.71.64 1.19s-.3.92-.64 1.19l-2.35 1.27-2.46-2.46 2.46-2.46 2.35 1.27zM6.05 2.66l10.76 6.22-2.27 2.27L6.05 2.66z" />
+                    </svg>
+                    Google Play
+                  </a>
+                ) : (
+                  <WaitlistButton className="glow-button group">
+                    <svg className="h-5 w-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm3.35-4.31c.34.27.64.71.64 1.19s-.3.92-.64 1.19l-2.35 1.27-2.46-2.46 2.46-2.46 2.35 1.27zM6.05 2.66l10.76 6.22-2.27 2.27L6.05 2.66z" />
+                    </svg>
+                    Join Waitlist
+                  </WaitlistButton>
+                )}
                 <div className="relative">
                   <span className="sealed-badge">Soon</span>
                   <div className="sealed-button">
@@ -395,9 +415,15 @@ export default function Home() {
                     <li key={f} className="flex items-center gap-2"><span className="text-[var(--glow-primary)]">✓</span> {f}</li>
                   ))}
                 </ul>
-                <a href="https://play.google.com/store/apps/details?id=com.contextwell.app" className="block w-full">
-                  <button className="w-full glow-button">Upgrade to Plus</button>
-                </a>
+{IS_PUBLISHED ? (
+                  <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="block w-full">
+                    <button className="w-full glow-button">Upgrade to Plus</button>
+                  </a>
+                ) : (
+                  <WaitlistButton className="w-full glow-button">
+                    Join Waitlist
+                  </WaitlistButton>
+                )}
               </div>
 
               {/* Pro Tier */}
@@ -410,11 +436,17 @@ export default function Home() {
                     <li key={f} className="flex items-center gap-2"><span className="text-[var(--glow-accent)]">✓</span> {f}</li>
                   ))}
                 </ul>
-                <a href="https://play.google.com/store/apps/details?id=com.contextwell.app" className="block w-full">
-                  <button className="w-full py-3 rounded-xl border border-[var(--glow-accent)] text-[var(--glow-accent)] hover:bg-[var(--glow-accent)]/10 transition-colors">
-                    Go Pro
-                  </button>
-                </a>
+{IS_PUBLISHED ? (
+                  <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="block w-full">
+                    <button className="w-full py-3 rounded-xl border border-[var(--glow-accent)] text-[var(--glow-accent)] hover:bg-[var(--glow-accent)]/10 transition-colors">
+                      Go Pro
+                    </button>
+                  </a>
+                ) : (
+                  <WaitlistButton className="w-full py-3 rounded-xl border border-[var(--glow-accent)] text-[var(--glow-accent)] hover:bg-[var(--glow-accent)]/10 transition-colors">
+                    Join Waitlist
+                  </WaitlistButton>
+                )}
               </div>
             </div>
           </div>
@@ -487,14 +519,20 @@ export default function Home() {
                 Free to start, premium features available.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.contextwell.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glow-button"
-                >
-                  Download for Android
-                </a>
+                {IS_PUBLISHED ? (
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glow-button"
+                  >
+                    Download for Android
+                  </a>
+                ) : (
+                  <WaitlistButton className="glow-button">
+                    Join Waitlist
+                  </WaitlistButton>
+                )}
                 <div className="relative">
                   <span className="sealed-badge">Soon</span>
                   <div className="sealed-button">Download for iOS</div>
