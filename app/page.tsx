@@ -380,7 +380,7 @@ export default function Home() {
               </div>
 
               {/* Plus Tier — Highlighted */}
-              <div className="pricing-card glass-card p-8 relative border-2 border-[var(--glow-primary)] scale-105 z-10 overflow-visible">
+              <div className="pricing-card glass-card p-8 relative border-2 border-[var(--glow-primary)] scale-105 z-10 !overflow-visible">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 px-4 py-1 rounded-full bg-[var(--glow-primary)] text-black text-sm font-semibold whitespace-nowrap">
                   Most Popular
                 </div>
