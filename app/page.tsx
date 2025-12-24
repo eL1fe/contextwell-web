@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { WaitlistButton } from '@/components/WaitlistModal'
 
-// TODO: Set to true when app is published on Google Play
+// TODO(El): Set to true when app is published on Google Play
+// This will replace all "Join Waitlist" buttons with Google Play links
 const IS_PUBLISHED = false
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.contextwell.app'
 
