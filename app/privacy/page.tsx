@@ -88,7 +88,7 @@ export default function PrivacyPolicy() {
                       Health & Fitness Data
                     </h3>
                     <ul className="ml-6 list-disc space-y-1">
-                      <li>Sleep data synced from Health Connect (Android) — duration, stages, heart rate, HRV</li>
+                      <li>Sleep data synced from Health Connect (Android) — duration, stages, heart rate</li>
                       <li>Nutrition information from photos you take and manual entries</li>
                       <li>Water intake logs and hydration goals</li>
                       <li>Fasting session times, durations, and streaks</li>
