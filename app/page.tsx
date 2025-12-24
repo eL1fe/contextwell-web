@@ -76,7 +76,8 @@ export default function Home() {
             <div className="hidden items-center gap-8 md:flex">
               <a href="#features" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Features</a>
               <a href="#pricing" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Pricing</a>
-              <a href="#faq" className="footer-link hover:text-[var(--glow-primary)] transition-colors">FAQ</a>
+              <Link href="/about" className="footer-link hover:text-[var(--glow-primary)] transition-colors">About</Link>
+              <Link href="/contact" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Contact</Link>
               <a
                 href="https://play.google.com/store/apps/details?id=com.contextwell.app"
                 target="_blank"
@@ -177,11 +178,13 @@ export default function Home() {
                 <div className="relative w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 animate-float">
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--glow-primary)]/40 to-[var(--glow-accent)]/30 rounded-full blur-3xl animate-pulse" />
                   <Image
-                    src="/mascot_mage.png"
+                    src="/mascot_mage.webp"
                     alt="Crystal the Mage"
                     fill
+                    sizes="(max-width: 768px) 160px, (max-width: 1024px) 224px, 288px"
                     className="object-contain drop-shadow-[0_0_40px_rgba(0,212,170,0.6)] relative z-10"
                     priority
+                    fetchPriority="high"
                   />
                 </div>
               </div>
@@ -468,9 +471,10 @@ export default function Home() {
               {/* Mascot */}
               <div className="relative w-32 h-32 mx-auto mb-6">
                 <Image
-                  src="/mascot_mage.png"
+                  src="/mascot_mage.webp"
                   alt="Crystal"
                   fill
+                  sizes="128px"
                   className="object-contain drop-shadow-[0_0_30px_rgba(0,212,170,0.5)]"
                 />
               </div>
@@ -504,24 +508,69 @@ export default function Home() {
             FOOTER
            ═══════════════════════════════════════════════════════════ */}
         <footer className="relative border-t border-[var(--glass-border)] px-6 py-12">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 md:flex-row">
-            <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--glow-primary)]/10 text-base">
-                🔮
+          <div className="mx-auto max-w-6xl">
+            <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
+              {/* Logo */}
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--glow-primary)]/10 text-base">
+                  🔮
+                </div>
+                <span className="text-lg font-medium" style={{ fontFamily: 'var(--font-cinzel), serif' }}>
+                  ContextWell
+                </span>
               </div>
-              <span className="text-lg font-medium" style={{ fontFamily: 'var(--font-cinzel), serif' }}>
-                ContextWell
-              </span>
+
+              {/* Navigation */}
+              <nav className="flex flex-wrap items-center justify-center gap-6">
+                <Link href="/about" className="footer-link hover:text-[var(--glow-primary)] transition-colors">About</Link>
+                <Link href="/contact" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Contact</Link>
+                <Link href="/privacy" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Privacy</Link>
+                <Link href="/terms" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Terms</Link>
+                <Link href="/delete-account" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Delete Account</Link>
+              </nav>
+
+              {/* Social Links - TODO: Update URLs when accounts are created */}
+              <div className="flex items-center gap-4">
+                {/* TODO: Update to real Twitter/X handle */}
+                <a
+                  href="https://x.com/contextwell"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:bg-[var(--glow-primary)]/10 hover:border-[var(--glow-primary)] transition-colors"
+                  aria-label="Twitter"
+                >
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+                {/* TODO: Update to real Instagram handle */}
+                <a
+                  href="https://instagram.com/contextwell.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:bg-[var(--glow-primary)]/10 hover:border-[var(--glow-primary)] transition-colors"
+                  aria-label="Instagram"
+                >
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </a>
+                <a
+                  href="mailto:support@contextwell.app"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:bg-[var(--glow-primary)]/10 hover:border-[var(--glow-primary)] transition-colors"
+                  aria-label="Email"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </a>
+              </div>
             </div>
 
-            <nav className="flex flex-wrap items-center justify-center gap-8">
-              <Link href="/privacy" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Terms of Service</Link>
-              <Link href="/delete-account" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Delete Account</Link>
-              <a href="mailto:support@contextwell.app" className="footer-link hover:text-[var(--glow-primary)] transition-colors">Contact</a>
-            </nav>
-
-            <p className="text-sm text-[var(--text-muted)]">© {new Date().getFullYear()} ContextWell</p>
+            {/* Copyright */}
+            <div className="mt-8 pt-8 border-t border-[var(--glass-border)] text-center">
+              <p className="text-sm text-[var(--text-muted)]">© {new Date().getFullYear()} ContextWell. All rights reserved.</p>
+            </div>
           </div>
         </footer>
       </div>
